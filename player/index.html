@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js" defer></script>
+  </head>
+
+  <body>
+    <video
+      class="video-js"
+      autoplay
+      controls
+      preload="metadata"
+      width="720"
+      data-setup='{ "liveui": true }'
+    >
+      <source src="/hls/stream.m3u8" type="application/x-mpegURL" />
+
+      <!-- If you want do use DASH instead of HLS -->
+      <!-- <source src="/dash/stream.mpd" type="application/dash+xml" /> -->
+    </video>
+  </body>
+</html>
