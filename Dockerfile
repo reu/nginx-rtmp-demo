@@ -3,6 +3,9 @@ FROM ubuntu:latest
 ARG NGINX_VERSION=1.20.2
 ARG NGINX_RTMP_VERSION=1.2.2
 
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update && \
     apt-get install -y \
       build-essential \
@@ -13,7 +16,12 @@ RUN apt-get update && \
       libpcre3 \
       libpcre3-dev \
       zlib1g \
-      zlib1g-dev
+      zlib1g-dev \
+      certbot \
+      python3 \
+      python3-pip
+
+RUN pip install certbot-nginx
 
 RUN mkdir -p /tmp/nginx && \
     cd /tmp/nginx && \
